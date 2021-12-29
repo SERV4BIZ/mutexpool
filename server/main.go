@@ -53,6 +53,26 @@ func main() {
 		intTime = 60
 	}
 
+	// Unlock mutex if expired
+	go func() {
+		for {
+			unix := time.Now().Unix()
+			global.MutexMapStore.RLock()
+			for _, objItem := range global.MapStore {
+				if objItem.Stamp > 0 {
+					diff := unix - int64(objItem.Stamp)
+					if diff > int64(global.Expire) {
+						objItem.RUID = ""
+						objItem.Stamp = 0
+						objItem.Unlock()
+					}
+				}
+			}
+			global.MutexMapStore.RUnlock()
+			<-time.After(time.Second * time.Duration(global.Expire))
+		}
+	}()
+
 	router := http.NewServeMux()
 	router.HandleFunc("/", WorkHandler)
 
