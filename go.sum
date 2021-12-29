@@ -1,0 +1,4 @@
+github.com/SERV4BIZ/gfp v0.0.5 h1:ed2I4DlTELLH5Qii/suexeOJssiqTNCU5bkH7WrGagw=
+github.com/SERV4BIZ/gfp v0.0.5/go.mod h1:/T03M5tw1rKmUCPZUsR3USA6C07nh4fWZ/TkjUiKuoE=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
