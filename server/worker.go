@@ -28,6 +28,7 @@ func Lock(ruid string, ouid string) bool {
 	objItem.Lock()
 	objItem.RUID = ruid
 	objItem.Stamp = int(time.Now().Unix())
+	fmt.Println("Lock - ", ruid, " - ", ouid)
 	return true
 }
 
@@ -40,6 +41,7 @@ func Unlock(ruid string, ouid string) bool {
 		objItem.RUID = ""
 		objItem.Stamp = 0
 		objItem.Unlock()
+		fmt.Println("Unlock - ", ruid, " - ", ouid)
 		return true
 	}
 	return false
