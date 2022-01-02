@@ -8,7 +8,7 @@ import (
 )
 
 // Write is write file to coresan
-func (me *MutexPoolSession) Lock(txtUID string) (bool, error) {
+func (me *MutexPoolSession) Lock(txtUID string) error {
 	jsoCmd := new(jsons.JSONObject).Factory()
 	jsoCmd.PutString("txt_command", "lock")
 	jsoCmd.PutString("txt_ruid", me.UUID)
@@ -16,7 +16,7 @@ func (me *MutexPoolSession) Lock(txtUID string) (bool, error) {
 
 	jsoReq := networks.Request(me.MutexPoolHost.JSOConfigHost, jsoCmd)
 	if jsoReq.GetInt("status") <= 0 {
-		return false, errors.New(jsoReq.GetString("txt_msg"))
+		return errors.New(jsoReq.GetString("txt_msg"))
 	}
-	return true, nil
+	return nil
 }
