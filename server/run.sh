@@ -1,6 +1,6 @@
 #!/bin/sh
 
-RUNNAME="server.darwin"
+RUNNAME="server.darwin.amd64"
 
 clear
 ./build.sh
